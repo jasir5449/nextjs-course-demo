@@ -47,6 +47,8 @@ export async function getStaticPaths() {
     const paths = singleMeetupId.map((meetup) => ({
         params: { meetupId: meetup._id.toString() },
       }));
+ 
+ console.log(paths);
 
     return {
         paths,
