@@ -56,7 +56,7 @@ export async function getStaticPaths() {
     };
   }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
     const meetupId = context.params.meetupId;
     const client = await MongoClient.connect('mongodb+srv://jasir5449:Jasir2299@cluster0.4b5wc.mongodb.net/meetups');
     const db=  client.db();
@@ -76,7 +76,8 @@ export async function getServerSideProps(context) {
                 image: selectedMeetup.image,
                 description: selectedMeetup.description,
               },
-        }
+        },
+        revalidate:2
     }
 }
 
