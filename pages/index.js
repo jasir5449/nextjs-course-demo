@@ -36,7 +36,7 @@ export async function getStaticProps (){
         props:{
             meetups:JSON.parse(JSON.stringify(result))
         },
-        revalidate:2
+        revalidate:1
     }
 }
 
