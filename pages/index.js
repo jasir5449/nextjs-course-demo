@@ -20,7 +20,7 @@ const HomePage =(props) =>{
 //     }
 // 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 };
 
-export async function getStaticProps (){
+export async function getServerSideProps(){
     
     // const response = await fetch('http://127.0.0.1:3000/api/new-meetup');
     // const result= await response.json();
@@ -35,8 +35,7 @@ export async function getStaticProps (){
     return {
         props:{
             meetups:JSON.parse(JSON.stringify(result))
-        },
-        revalidate:1
+        }
     }
 }
 
