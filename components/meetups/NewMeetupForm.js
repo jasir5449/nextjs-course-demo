@@ -34,6 +34,7 @@ function NewMeetupForm(props) {
   };
   return (
     <div style={mystyle}>  
+      <Card>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor='title'>Meetup Title</label>
