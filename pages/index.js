@@ -3,11 +3,13 @@ import MeetupList from '../components/meetups/MeetupList';
 import { Fragment, useEffect,useState } from "react";
 import Banner from '../components/banner/Banner';
 import Image from 'next/image';
+import { useEffect,useState } from "react";
 
 
 
 
 const HomePage =(props) =>{
+
 
     const handleOnBannerBtnClick =()=>{
         console.log('clicked');
@@ -43,6 +45,8 @@ const HomePage =(props) =>{
         </Fragment>
        
     )
+
+
 }
 
 
@@ -57,11 +61,17 @@ const HomePage =(props) =>{
 
 export async function getServerSideProps (){
     
+    // const response = await fetch('http://127.0.0.1:3000/api/new-meetup');
+    // const result= await response.json();
+    
+
   const client = await MongoClient.connect('mongodb+srv://jasir5449:Jasir2299@cluster0.4b5wc.mongodb.net/meetups');
   const db=  client.db();
   const meetupCollection = db.collection('meetups');
   const result = await meetupCollection.find().toArray();
   client.close();
+
+  console.log(JSON.stringify(result));
 
     return {
         props:{

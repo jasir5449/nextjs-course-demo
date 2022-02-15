@@ -47,10 +47,12 @@ export async function getStaticPaths() {
     const paths = singleMeetupId.map((meetup) => ({
         params: { meetupId: meetup._id.toString() },
       }));
+ 
+ console.log(paths);
 
     return {
         paths,
-        fallback: false
+        fallback: 'blocking'
     };
   }
 
@@ -75,9 +77,16 @@ export async function getStaticProps(context) {
                 description: selectedMeetup.description,
               },
         },
+<<<<<<< HEAD
         revalidate:2
+=======
+        
+>>>>>>> 4bc66cc934bf6468ffdf5077baca104e79a62f85
     }
 }
 
 export default MeetupDetailPage;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4bc66cc934bf6468ffdf5077baca104e79a62f85

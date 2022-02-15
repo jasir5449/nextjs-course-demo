@@ -26,13 +26,16 @@ function NewMeetupForm(props) {
 
     props.onAddMeetup(meetupData);
   }
-  const mystyle = {
+
+    const mystyle = {
     margin: "3rem auto ",
     width: "90%",
     maxWidth: "40rem"
   };
   return (
+
     <div style={mystyle}>    
+
       <Card>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
@@ -61,6 +64,7 @@ function NewMeetupForm(props) {
         </div>
       </form>
     </Card>
+
     </div>
   );
 }
