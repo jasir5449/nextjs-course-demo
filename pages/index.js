@@ -3,7 +3,7 @@ import MeetupList from '../components/meetups/MeetupList';
 import { Fragment, useEffect,useState } from "react";
 import Banner from '../components/banner/Banner';
 import Image from 'next/image';
-import { useEffect,useState } from "react";
+
 
 
 
