@@ -1,4 +1,4 @@
-import MeetupFormNew from '../../components/meetups/MeetupFormNew';
+import MeetupFormNew from '../../components/meetups/MeetUpFormNew';
 
 import {useRouter}  from 'next/router';
 
