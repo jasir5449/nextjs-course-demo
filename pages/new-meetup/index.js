@@ -1,4 +1,4 @@
-import MeetupFormNew from '../../components/meetups/MeetUpFormNew';
+import MeetUpFormNew from '../../components/meetups/MeetUpFormNew';
 
 import {useRouter}  from 'next/router';
 
@@ -19,7 +19,7 @@ function NewMeetupPage() {
     const result= await response.json();
     router.push('/');
   }
-  return  (<MeetupFormNew onAddMeetup={addMeetupHandler} />)
+  return  (<MeetUpFormNew onAddMeetup={addMeetupHandler} />)
       
 }
 
