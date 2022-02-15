@@ -1,29 +1,48 @@
 import {MongoClient} from 'mongodb';
 import MeetupList from '../components/meetups/MeetupList';
-import { useEffect,useState } from "react";
+import { Fragment, useEffect,useState } from "react";
+import Banner from '../components/banner/Banner';
+import Image from 'next/image';
 
 
-const DUMMY_MEETUPS = [
-  {
-    id: 'm1',
-    title: 'A First Meetup',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1280px-Stadtbild_M%C3%BCnchen.jpg',
-    address: 'Some address 5, 12345 Some City',
-    description: 'This is a first meetup!'
-  },
-  {
-    id: 'm2',
-    title: 'A Second Meetup',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1280px-Stadtbild_M%C3%BCnchen.jpg',
-    address: 'Some address 10, 12345 Some City',
-    description: 'This is a second meetup!'
-  }
-];
 
 
 const HomePage =(props) =>{
-  console.log(props.meetups);
-   return (<MeetupList meetups={props.meetups} />)
+
+    const handleOnBannerBtnClick =()=>{
+        console.log('clicked');
+    }
+    
+
+    return (
+        <Fragment>
+         
+                <Banner  buttonText='View Meetups Near by' handleOnClick={handleOnBannerBtnClick}/> 
+                <div className='heroImage'>
+                    <Image
+                        src="/static/hero-image.png"
+                        width={700}
+                        height={400}
+                        alt="hero image"
+                    />
+                    </div>
+                    <div className='sectionWrapper'>
+                        <h2 className='heading2'>Latest Meetups</h2>
+                         {props.meetups.length === 0 &&  <center><Image
+                        src="/static/no-result.png"
+                        width={500}
+                        height={300}
+                        alt="hero image"
+                    /></center>}
+                         <MeetupList meetups={props.meetups} />
+                       
+                    </div>  
+
+         
+
+        </Fragment>
+       
+    )
 }
 
 
@@ -36,10 +55,7 @@ const HomePage =(props) =>{
 //     }
 // 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 };
 
-export async function getStaticProps (){
-    
-    // const response = await fetch('http://127.0.0.1:3000/api/new-meetup');
-    // const result= await response.json();
+export async function getServerSideProps (){
     
   const client = await MongoClient.connect('mongodb+srv://jasir5449:Jasir2299@cluster0.4b5wc.mongodb.net/meetups');
   const db=  client.db();
@@ -47,12 +63,10 @@ export async function getStaticProps (){
   const result = await meetupCollection.find().toArray();
   client.close();
 
-  console.log(JSON.stringify(result));
     return {
         props:{
             meetups:JSON.parse(JSON.stringify(result))
-        },
-        revalidate:1
+        }
     }
 }
 

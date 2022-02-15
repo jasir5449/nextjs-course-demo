@@ -1,12 +1,24 @@
 import MainNavigation from './MainNavigation';
 import classes from './Layout.module.css';
+import Head from 'next/head';
 
 function Layout(props) {
   return (
-    <div>
+    <>
+     <Head>
+        <title>Next Js Meetups</title>
+        <link rel="icon" href="/favicon.ico" />
+
+        <meta
+          name="description"
+          content="Next Js Developer Meetups"
+        ></meta>
+       </Head> 
       <MainNavigation />
-      <main className={classes.main}>{props.children}</main>
-    </div>
+       <div className='container'> 
+          <main className='main'>{props.children}</main>
+       </div>
+    </>
   );
 }
 

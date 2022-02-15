@@ -9,7 +9,7 @@ function MeetupItem(props) {
   };
 
   return (
-    <li className={classes.item}>
+    <li className={classes.item} onClick={showDetailPage}>
       <Card>
         <div className={classes.image}>
           <img src={props.image} alt={props.title} />
@@ -18,9 +18,7 @@ function MeetupItem(props) {
           <h3>{props.title}</h3>
           <address>{props.address}</address>
         </div>
-        <div className={classes.actions}>
-          <button onClick={showDetailPage}>Show Details</button>
-        </div>
+     
       </Card>
     </li>
   );
